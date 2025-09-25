@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Booking QR</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script>
+    function checkStatus() {
+      fetch("/status_check/{{ booking_id }}")
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === "Present") {
+            document.getElementById("status").innerHTML =
+              "✅ Booking {{ booking_id }} marked Present!";
+            document.getElementById("qrimg").style.display = "none"; // hide QR after scan
+          } else {
+            setTimeout(checkStatus, 3000); // retry every 3s
+          }
+        });
+    }
+    window.onload = checkStatus;
+  </script>
+</head>
+<body>
+  <div class="form-container" style="text-align:center;">
+    <h2>Show this QR at the gate</h2>
+    <img id="qrimg" src="/static/{{ qr_filename }}" alt="QR Code" style="max-width:300px;">
+    <p id="status">⏳ Waiting for check-in...</p>
+  </div>
+</body>
+</html>
