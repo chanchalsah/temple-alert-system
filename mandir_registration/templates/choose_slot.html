@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Select Time Slot</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="form-container">
+  <h2>Step 2: Choose Time Slot</h2>
+  <form action="/register" method="POST">
+    <!-- Hidden fields to pass previous step data -->
+    <input type="hidden" name="name" value="{{ name }}">
+    <input type="hidden" name="family" value="{{ family }}">
+    <input type="hidden" name="slot_date" value="{{ slot_date }}">
+
+    <!-- Loop over slots -->
+    {% for slot, available in slots.items() %}
+      <button type="submit" name="slot_time" value="{{ slot }}"
+        class="{{ 'slot-available' if available else 'slot-full' }}"
+        {% if not available %} disabled {% endif %}>
+        {{ slot }} {% if not available %}- Full{% endif %}
+      </button>
+    {% endfor %}
+  </form>
+</div>
+</body>
+</html>

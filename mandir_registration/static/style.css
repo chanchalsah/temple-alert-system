@@ -1,0 +1,22 @@
+body { font-family: Arial, sans-serif; background: #f8f9fa; }
+.form-container {
+  max-width: 500px; margin: 50px auto; background: white; padding: 20px;
+  border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+input, select, textarea {
+  width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px;
+}
+button {
+  padding: 10px 20px; color: white; cursor: pointer;
+  margin: 5px; border: none; border-radius: 5px;
+}
+button:hover { opacity: 0.9; }
+
+.slot-available {
+  background-color: green;
+}
+
+.slot-full {
+  background-color: red;
+  cursor: not-allowed;
+}

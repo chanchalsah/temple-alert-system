@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mandir Visit Registration</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="form-container">
+  <h2>Step 1: Enter Details</h2>
+  <form action="/choose_slot" method="POST">
+    <label for="name">Primary Person Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="family">Family Members (comma separated):</label>
+    <textarea id="family" name="family"></textarea>
+
+    <label for="slot_date">Date of Visit:</label>
+    <input type="date" id="slot_date" name="slot_date" required min="{{ min_date }}">
+
+    <button type="submit">Next</button>
+  </form>
+</div>
+</body>
+</html>
